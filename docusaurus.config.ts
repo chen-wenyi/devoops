@@ -6,8 +6,8 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 const config: Config = {
   title: 'DevOops',
-  tagline: '',
-  favicon: 'img/favicon.ico',
+  tagline: 'Oops Happens — We Document It.',
+  favicon: 'img/icon/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://chen-wenyi.github.io',
@@ -17,8 +17,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'chen-wenyi', // Usually your GitHub org/user name.
+  projectName: 'devoops', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -39,8 +39,8 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -50,8 +50,8 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -70,19 +70,20 @@ const config: Config = {
     navbar: {
       title: 'DevOops',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'DevOops Logo',
+        src: 'img/icon/favicon.svg',
       },
+      hideOnScroll: true,  // Enables hiding navbar on scroll
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Docs',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/chen-wenyi/devoops',
           label: 'GitHub',
           position: 'right',
         },
@@ -95,28 +96,28 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Docs',
               to: '/docs/intro',
             },
           ],
         },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
+        // {
+        //   title: 'Community',
+        //   items: [
+        //     {
+        //       label: 'Stack Overflow',
+        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+        //     },
+        //     {
+        //       label: 'Discord',
+        //       href: 'https://discordapp.com/invite/docusaurus',
+        //     },
+        //     {
+        //       label: 'X',
+        //       href: 'https://x.com/docusaurus',
+        //     },
+        //   ],
+        // },
         {
           title: 'More',
           items: [
@@ -126,12 +127,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/chen-wenyi/devoops',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      // copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

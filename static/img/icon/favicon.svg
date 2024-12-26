@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1174)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(3.3333333333333335,0,0,3.3333333333333335,0,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="300" height="300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Squirrel Body -->
+  <path d="M150 220 C190 220, 210 180, 210 150 C210 120, 190 100, 150 100 C110 100, 90 120, 90 150 C90 180, 110 220, 150 220" fill="#B45309"></path>
+  
+  <!-- Tail -->
+  <path d="M190 150 C230 130, 250 100, 240 70 C230 40, 200 30, 180 50 C160 70, 170 100, 190 150" fill="#B45309"></path>
+  
+  <!-- Ears -->
+  <path d="M120 110 L110 80 L130 100 Z" fill="#92400E"></path>
+  <path d="M180 110 L190 80 L170 100 Z" fill="#92400E"></path>
+  
+  <!-- Eyes -->
+  <circle cx="130" cy="140" r="10" fill="white"></circle>
+  <circle cx="170" cy="140" r="10" fill="white"></circle>
+  <circle cx="133" cy="142" r="5" fill="#DC2626"></circle>
+  <circle cx="173" cy="142" r="5" fill="#DC2626"></circle>
+  
+  <!-- Angry Eyebrows -->
+  <path d="M120 125 L140 135" stroke="black" stroke-width="3"></path>
+  <path d="M180 125 L160 135" stroke="black" stroke-width="3"></path>
+  
+  <!-- Nose -->
+  <ellipse cx="150" cy="155" rx="8" ry="5" fill="black"></ellipse>
+  
+  <!-- Gritted Teeth Mouth -->
+  <path d="M135 165 L165 165" stroke="#7C2D12" stroke-width="3"></path>
+  <path d="M135 165 L165 165" stroke="white" stroke-width="1"></path>
+  <path d="M140 165 L140 170" stroke="#7C2D12" stroke-width="2"></path>
+  <path d="M150 165 L150 170" stroke="#7C2D12" stroke-width="2"></path>
+  <path d="M160 165 L160 170" stroke="#7C2D12" stroke-width="2"></path>
+  
+  <!-- Steam Effect -->
+  <path d="M130 90 C125 80, 135 70, 130 60" stroke="#DC2626" stroke-width="2" fill="none"></path>
+  <path d="M150 85 C145 75, 155 65, 150 55" stroke="#DC2626" stroke-width="2" fill="none"></path>
+  <path d="M170 90 C165 80, 175 70, 170 60" stroke="#DC2626" stroke-width="2" fill="none"></path>
+</svg></svg></g></g><defs><clipPath id="SvgjsClipPath1174"><rect width="1000" height="1000" x="0" y="0" rx="300" ry="300"></rect></clipPath></defs></svg>
