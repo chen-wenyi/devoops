@@ -93,5 +93,78 @@ jobs:
 Go to the Settings tab of your repository, navigate to Actions, and enable workflows if they are not already enabled.
 ![](./github-action.png)
 
-### Conclusion
+
 Your Docusaurus site is now live on GitHub Pages! Visit `https://<your-username>.github.io/<repository-name>/` to see your site in action. With this setup, any changes pushed to the main branch will automatically update the site.
+
+
+## Update: Implement Search on site
+
+You need to enbale algolia crawler service for search. You can apply the service via [DocSearch program](https://docsearch.algolia.com/apply). But you don't have the full permission to manage the api keys (You may need the permissions for Github Action).
+
+[official configuration](https://docusaurus.io/docs/search#using-algolia-docsearch)
+```js title="docusaurus.config.js"
+export default {
+  // ...
+  themeConfig: {
+    // ...
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'YOUR_APP_ID',
+
+      // Public API key: it is safe to commit it
+      apiKey: 'YOUR_SEARCH_API_KEY',
+
+      indexName: 'YOUR_INDEX_NAME',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+
+      //... other Algolia params
+    },
+  },
+};
+```
+
+Below steps tell you how to setup a crawler on Algolia:
+
+### Step 1 Create an application
+![](./create-app.png)
+
+once the app is created, go to datasource page and crawler tab to set domian for crawling. Then add and verify the domain by instruction.
+
+![](./add-crawler.png)
+
+### Step 2 Add a crawler
+
+![](./crawler.png)
+
+### Step 3 Paste api keys
+
+Find your apikeys and paste them in `docusaurus.config.ts`.
+
+![](./apikeys.png)
+
+You can see the docSearch is functioning in your site.
+
+![](docSearch.png)
+
+## Github Action for recrawling
+

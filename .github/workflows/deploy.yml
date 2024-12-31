@@ -52,6 +52,7 @@ jobs:
 
   algolia_crawl:
       name: Algolia Recrawl
+      needs: deploy
       runs-on: ubuntu-latest
       environment: github-pages
       steps:
@@ -64,3 +65,4 @@ jobs:
             algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
             algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
             site-url: 'https://chen-wenyi.github.io/devoops/'
+            crawler-name: 'devoops'
