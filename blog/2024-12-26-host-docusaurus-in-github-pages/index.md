@@ -96,8 +96,8 @@ Go to the Settings tab of your repository, navigate to Actions, and enable workf
 
 Your Docusaurus site is now live on GitHub Pages! Visit `https://<your-username>.github.io/<repository-name>/` to see your site in action. With this setup, any changes pushed to the main branch will automatically update the site.
 
-
-## Update: Implement Search on site
+## Update
+### Implement Search on site
 
 You need to enbale algolia crawler service for search. You can apply the service via [DocSearch program](https://docsearch.algolia.com/apply). But you don't have the full permission to manage the api keys (You may need the permissions for Github Action).
 
@@ -145,18 +145,18 @@ export default {
 
 Below steps tell you how to setup a crawler on Algolia:
 
-### Step 1 Create an application
+#### Step 1 Create an application
 ![](./create-app.png)
 
 once the app is created, go to datasource page and crawler tab to set domian for crawling. Then add and verify the domain by instruction.
 
 ![](./add-crawler.png)
 
-### Step 2 Add a crawler
+#### Step 2 Add a crawler
 
 ![](./crawler.png)
 
-### Step 3 Paste api keys
+#### Step 3 Paste api keys
 
 Find your apikeys and paste them in `docusaurus.config.ts`.
 
@@ -166,5 +166,40 @@ You can see the docSearch is functioning in your site.
 
 ![](docSearch.png)
 
-## Github Action for recrawling
+### Github Action for recrawling
+
+[algoliasearch-crawler-github-actions](https://github.com/algolia/algoliasearch-crawler-github-actions?tab=readme-ov-file) allows you to recreawling you site after each deployment. Add job below to `deploy.yml`.
+
+```yml title=".github/workflows/deploy.yml"
+  algolia_crawl:
+      name: Algolia Recrawl
+      needs: deploy
+      runs-on: ubuntu-latest
+      environment: github-pages
+      steps:
+        - name: Algolia crawler creation and crawl
+          uses: algolia/algoliasearch-crawler-github-actions@v1.0.10
+          id: algolia_crawler
+          with: # mandatory parameters
+            crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}
+            crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}
+            algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
+            algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
+            site-url: 'https://chen-wenyi.github.io/devoops/'
+            crawler-name: 'devoops'
+```
+
+Create your secrets in repository settings.
+
+![alt text](./repo-settings.png)
+
+You may find you crawler apikeys here:
+
+![alt text](./crawler-apikeys.png)
+
+For `ALGOLIA_API_KEY`, you have to create a new key (get error when using admin apikey) and grant proper permissions for it.
+
+![alt text](./new-apikeys.png)
+
+Now, push your code to remote and see if it is working!
 
