@@ -37,28 +37,56 @@ export const cards: Card[] = [
     blocks: [
       {
         title: 'React',
-        content: [
-          { title: 'Suspense', link: '/docs/react/suspense' },
-        ],
+        content: [{ title: 'Suspense', link: '/docs/frontend/react/suspense' }],
       },
       { title: 'Typescript', content: [] },
-      { title: 'Data Management', content: [] },
-      { title: 'Tailwind', content: [{ title: 'Cheatsheet', link: '/docs/useful-links/tailwind-cheatsheet' }] },
-      { title: 'Framer Motion', content: [] },
-      { title: 'Shadcn UI', content: [] },
+      { title: 'Data Management', content: [{ title: 'Redux', link: ''}, { title: 'Zustand', link: '' }] },
+      { title: 'HTTP/WS', content: [{ title: 'Axios', link: ''}] },
+      {
+        title: 'UI',
+        content: [
+          {
+            title: 'Tailwind',
+            link: '/docs/useful-links/tailwind-cheatsheet',
+          },
+          {
+            title: 'Framer Motion',
+            link: '',
+          },
+          {
+            title: 'Shadcn UI',
+            link: '',
+          },
+        ],
+      },
     ],
     color: '#2f9e44',
   },
   {
-    title: 'Bundling',
+    title: 'Front-end Tooling',
     blocks: [
       {
-        title: 'Webpack',
-        content: [],
+        title: 'Build Tools',
+        content: [
+          { title: 'Vite', link: '' },
+          { title: 'create-raect-app', link: '' },
+        ],
       },
       {
-        title: 'Vite',
-        content: [],
+        title: 'Bundlers',
+        content: [
+          { title: 'Turbopack', link: '' },
+          { title: 'Webpack', link: '' },
+          { title: 'Rollup', link: '' },
+        ],
+      },
+      {
+        title: 'Package Management',
+        content: [
+          { title: 'npm', link: '' },
+          { title: 'yarn', link: '' },
+          { title: 'pnpm', link: '' },
+        ],
       },
     ],
     color: '#e03131',
@@ -99,9 +127,7 @@ export const cards: Card[] = [
       },
       {
         title: 'Web Storage',
-        content: [
-          { title: 'IndexedDB', link: '' },
-        ],
+        content: [{ title: 'IndexedDB', link: '' }],
       },
       {
         title: 'ORM',
@@ -112,34 +138,26 @@ export const cards: Card[] = [
         ],
       },
     ],
-    color: '#1e1e1e',
+    color: '#fab005',
   },
-  { 
+  {
     title: 'Mobile',
-    blocks: [
-      { title: 'PWA', content: [] },
-    ],
+    blocks: [{ title: 'PWA', content: [] }],
     color: '#2f9e44',
   },
   {
     title: 'Authentication',
-    blocks: [
-      { title: 'Clerk', content: [] },
-    ],
+    blocks: [{ title: 'Clerk', content: [] }],
     color: '#e8590c',
   },
   {
     title: 'Version Control',
-    blocks: [
-      { title: 'Git', content: [] },
-    ],
+    blocks: [{ title: 'Git', content: [] }],
     color: '#846358',
   },
   {
     title: 'containerization',
-    blocks: [
-      { title: 'Docker', content: [] },
-    ],
+    blocks: [{ title: 'Docker', content: [] }],
     color: '#0db7ed',
   },
   {
@@ -151,8 +169,8 @@ export const cards: Card[] = [
     title: 'Cloud Computing Platform',
     blocks: [
       { title: 'AWS', content: [] },
-      { title: 'Azure', content: [] },
+      { title: 'Azure', content: [{ title: 'Fundamentals', link: '/docs/cloud-computing-platform/Azure/azure-fundamentals'}] },
     ],
     color: '#9c36b5',
-  }
+  },
 ];
