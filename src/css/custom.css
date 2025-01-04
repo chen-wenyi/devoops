@@ -4,6 +4,13 @@
  * work well for content-centric websites.
  */
 
+ @font-face {
+  font-family: 'Excalifont';
+  src: url('/font/Excalifont-Regular.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
