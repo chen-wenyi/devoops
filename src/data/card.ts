@@ -168,7 +168,7 @@ export const cards: Card[] = [
   },
   {
     title: 'Version Control',
-    blocks: [{ title: 'Git', content: [] }],
+    blocks: [{ title: 'Git', content: [{ title: 'commands', link: '/docs/git/command' }] }],
     color: '#846358',
   },
   {
