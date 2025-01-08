@@ -37,11 +37,27 @@ export const cards: Card[] = [
     blocks: [
       {
         title: 'React',
-        content: [{ title: 'Suspense', link: '/docs/frontend/react/suspense' }],
+        content: [
+          { title: 'Suspense', link: '/docs/frontend/react/suspense' },
+          {
+            title: 'useTransition',
+            link: '/docs/frontend/react/usetransition',
+          },
+          {
+            title: 'useOptimistic',
+            link: '/docs/frontend/react/useoptimistic',
+          },
+        ],
       },
       { title: 'Typescript', content: [] },
-      { title: 'Data Management', content: [{ title: 'Redux', link: ''}, { title: 'Zustand', link: '' }] },
-      { title: 'HTTP/WS', content: [{ title: 'Axios', link: ''}] },
+      {
+        title: 'Data Management',
+        content: [
+          { title: 'Redux', link: '' },
+          { title: 'Zustand', link: '' },
+        ],
+      },
+      { title: 'HTTP/WS', content: [{ title: 'Axios', link: '' }] },
       {
         title: 'UI',
         content: [
@@ -169,7 +185,15 @@ export const cards: Card[] = [
     title: 'Cloud Computing Platform',
     blocks: [
       { title: 'AWS', content: [] },
-      { title: 'Azure', content: [{ title: 'Fundamentals', link: '/docs/cloud-computing-platform/Azure/azure-fundamentals'}] },
+      {
+        title: 'Azure',
+        content: [
+          {
+            title: 'Fundamentals',
+            link: '/docs/cloud-computing-platform/Azure/azure-fundamentals',
+          },
+        ],
+      },
     ],
     color: '#9c36b5',
   },

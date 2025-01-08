@@ -78,7 +78,7 @@ const config: Config = {
         alt: 'DevOops Logo',
         src: 'img/icon/favicon.svg',
       },
-      hideOnScroll: true,  // Enables hiding navbar on scroll
+      hideOnScroll: true, // Enables hiding navbar on scroll
       items: [
         {
           type: 'docSidebar',
@@ -86,7 +86,7 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/chen-wenyi/devoops',
           label: 'GitHub',
@@ -128,7 +128,6 @@ const config: Config = {
       sidebar: {
         hideable: true,
         // autoCollapseCategories: true,
-        
       },
     },
     // footer: {
@@ -178,7 +177,7 @@ const config: Config = {
     // },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismThemes.oneDark,
     },
   } satisfies Preset.ThemeConfig,
 };

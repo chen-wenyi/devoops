@@ -1,0 +1,83 @@
+---
+sidebar_position: 2
+---
+
+# useTransition
+## Usage
+### 1. you can use `useTransition` to handle the pending state for you.
+:::warning
+ it’s possible for previous requests to finish after later requests. When this happens, React currently has no way to know the intended order. This is because the updates are scheduled asynchronously, and React loses context of the order across the async boundary.
+:::
+```jsx
+const [isPending, startTransition] = useTransition();
+const [results, setResults] = useTransition();
+
+const handleSearch = (name) => {
+  startTransition(async () => {
+    const results = await searchResults(name);
+    startTransition(() => {
+      // Access the pending state of the transition, 
+      // by wrapping in startTransition again.
+      setResults(results);
+    });
+  })
+};
+
+return (
+  <div>
+    <input onChange={(e) => handleSearch(e.target.value)} />
+    {isPending ? "Loading..." : results.map((result) => <div>{result}</div>)}
+  </div>
+);
+```
+### 2. Perform non-blocking updates with Actions 
+```jsx
+import { startTransition, useState } from "react";
+import { memo } from "react";
+
+export default function App() {
+  const [val, setVal] = useState("");
+  const [data, setData] = useState([]);
+  const onChange = ({ target }) => {
+    setVal(target.value);
+    startTransition(() => { // you can use startTransition directly without pending state
+      setData(getNewData()); // will cause a slow rendering of the list
+    });
+  };
+
+  return (
+    <div className="App">
+      <input value={val} onChange={onChange} />
+      <Posts data={data} />
+    </div>
+  );
+}
+
+const getNewData = () => new Array(1000).fill(0).map(() => Math.floor(Math.random() * 100));
+
+const Posts = memo(({ data }) => {
+  return (
+    <ul>
+      {data.map((d, idx) => (
+        <SlowPost content={d} index={idx} />
+      ))}
+    </ul>
+  );
+});
+
+const SlowPost = ({ index, content }) => {
+  let startTime = performance.now();
+  while (performance.now() - startTime < 1) {
+    // Do nothing for 1 ms per item to emulate extremely slow code
+  }
+
+  return (
+    <li key={index} className="item">
+      Post #{content}
+    </li>
+  );
+};
+
+```
+
+[codesandbox demo](https://codesandbox.io/p/sandbox/3dty72)
