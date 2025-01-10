@@ -24,7 +24,7 @@ export const cards: Card[] = [
           { title: 'Variables', link: '' },
           { title: 'Array', link: '' },
           { title: 'Object', link: '' },
-          { title: 'Function(Tradiional vs Arrow)', link: '' },
+          { title: 'Function(Tradional vs Arrow)', link: '' },
           { title: 'Fetch Api', link: '' },
           { title: 'Asynchronous(Promise, async/await)', link: '' },
         ],
@@ -168,7 +168,12 @@ export const cards: Card[] = [
   },
   {
     title: 'Version Control',
-    blocks: [{ title: 'Git', content: [{ title: 'commands', link: '/docs/git/command' }] }],
+    blocks: [
+      {
+        title: 'Git',
+        content: [{ title: 'commands', link: '/docs/git/command' }],
+      },
+    ],
     color: '#846358',
   },
   {

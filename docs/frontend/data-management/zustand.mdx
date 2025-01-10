@@ -1,0 +1,116 @@
+---
+sidebar_position: 1
+---
+
+# Zustand
+
+## Overview
+Zustand has been gaining popularity as a state management library for React applications. 
+Its simplicity, minimal boilerplate, and seamless integration with React Hooks have made it an attractive alternative to more established libraries like Redux.
+
+## Quick Setup
+
+#### Define
+```tsx
+type bearStoreState = { bears: number };
+
+type bearStoreActions = {
+  addABear: () => void;
+};
+
+type StoreState = bearStoreState & bearStoreActions;
+
+export const useBearStore = create<StoreState>()((set, get) => ({
+  bears: 0,
+  addABear: () => set({ bears: get().bears + 1 }),
+}));
+```
+
+#### Usage
+```tsx
+const bear = useBearStore((state) => state.bears);
+const addABear = useBearStore((state) => state.addABear);
+```
+
+## Slicing the store into smaller bearStoreState
+
+#### Define types
+
+```tsx title="typing.ts"
+export type BearSlice = {
+  bears: number;
+  addABear: () => void;
+};
+
+export type FishSlice = {
+  fishes: number;
+  addAFish: () => void;
+};
+
+export type StoreState = BearSlice & FishSlice;
+```
+
+#### Slices
+```ts title="bearSlice.ts.ts"
+import { StateCreator } from "zustand";
+import { BearSlice, StoreState } from "./typing";
+
+export const createBearSlice: StateCreator<StoreState, [], [], BearSlice> = (
+  set,
+  get
+) => ({
+  bears: 0,
+  addABear: () => set({ bears: get().bears + 1 }),
+});
+```
+
+```ts title="fishSlice.ts.ts"
+import { StateCreator } from "zustand";
+import { FishSlice, StoreState } from "./typing";
+
+export const createFishSlice: StateCreator<StoreState, [], [], FishSlice> = (
+  set,
+  get
+) => ({
+  fishes: 0,
+  addAFish: () => set({ fishes: get().fishes + 1 }),
+});
+```
+
+#### Store
+
+```ts title="index.ts"
+import { create } from "zustand";
+import { createBearSlice } from "./bearSlice";
+import { createFishSlice } from "./fishSlice";
+import { StoreState } from "./typing";
+
+export const useBearStore = create<StoreState>()((...args) => ({
+  ...createBearSlice(...args),
+  ...createFishSlice(...args),
+}));
+```
+
+[codesandbox demo](https://codesandbox.io/p/sandbox/c3sm7q)
+
+## Devtools with time-travel debugging
+
+```ts
+import { devtools } from "zustand/middleware";
+
+export const useBearStore = create<StoreState>()(
+  devtools((...args) => ({
+    ...createBearSlice(...args),
+    ...createFishSlice(...args),
+  }))
+);
+```
+
+Once your store is configured with the devtools middleware:
+	1.	Open your application in a browser.
+	2.	Open the Redux DevTools extension in your browser. (You may need to install it if you haven’t already, from the Chrome Extension store).
+	3.	You should see your Zustand store appear in the DevTools with actions you can time-travel, inspect, and reset.
+
+
+
+
