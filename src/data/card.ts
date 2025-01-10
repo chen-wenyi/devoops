@@ -54,7 +54,7 @@ export const cards: Card[] = [
         title: 'Data Management',
         content: [
           { title: 'Redux', link: '' },
-          { title: 'Zustand', link: '' },
+          { title: 'Zustand', link: '/docs/frontend/data-management/zustand' },
         ],
       },
       { title: 'HTTP/WS', content: [{ title: 'Axios', link: '' }] },
