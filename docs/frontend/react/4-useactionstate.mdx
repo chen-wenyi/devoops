@@ -1,0 +1,22 @@
+---
+sidebar_position: 4
+---
+
+# useActionState
+## Definition
+useActionState is a React Hook that let using information returned by a **form action** 
+
+```tsx
+ function async action(currentState: unknown, formData: FormData) {
+  // ...
+    return 'next state';
+ }
+
+ const [state, formAction, pending] = useActionState(action, null);
+  // ...
+  return (
+    <form action={formAction}>
+      {/* ... */}
+    </form>
+  );
+```
