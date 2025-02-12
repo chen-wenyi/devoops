@@ -91,10 +91,8 @@ export const useBearStore = create<StoreState>()((...args) => ({
 }));
 ```
 
-[codesandbox demo](https://codesandbox.io/p/sandbox/c3sm7q)
-
 ## Devtools with time-travel debugging
-
+### Config Devtools
 ```ts
 import { devtools } from "zustand/middleware";
 
@@ -106,11 +104,68 @@ export const useBearStore = create<StoreState>()(
 );
 ```
 
+### Add action name
+```ts
+export const createBearSlice: StateCreator<
+  StoreState,
+  [["zustand/devtools", never]],
+  [],
+  BearSlice
+> = (set, get) => ({
+  bears: 0,
+  addABear: () => set({ bears: get().bears + 1 }, false, 'addABear')
+});
+```
+
+:::note
+If you have some middlewares then replace `StateCreator<MyState, [], [], MySlice>` with `StateCreator<MyState, Mutators, [], MySlice>`. For example, if you are using devtools then it will be `StateCreator<MyState, [["zustand/devtools", never]], [], MySlice>`.
+See the [**"Middlewares and their mutators reference"**](https://zustand.docs.pmnd.rs/guides/typescript#middlewares-and-their-mutators-reference) section for a list of all mutators.
+:::
+
 Once your store is configured with the devtools middleware:
 	1.	Open your application in a browser.
 	2.	Open the Redux DevTools extension in your browser. (You may need to install it if you haven’t already, from the Chrome Extension store).
 	3.	You should see your Zustand store appear in the DevTools with actions you can time-travel, inspect, and reset.
 
+## Integrate Immer for complex state management
+### Config Immer
+```ts
+import { immer } from "zustand/middleware/immer";
 
+export const useBearStore = create<StoreState>()(
+  devtools(
+    immer((...args) => ({
+      ...createBearSlice(...args),
+      ...createFishSlice(...args),
+    }))
+  )
+);
+```
+
+### Update Slices
+```ts
+import { StateCreator } from "zustand";
+import { BearSlice, StoreState } from "./typing";
+
+export const createBearSlice: StateCreator<
+  StoreState,
+  [["zustand/devtools", never], ["zustand/immer", never]],
+  [],
+  BearSlice
+> = (set) => ({
+  bears: 0,
+  addABear: () => {
+    set(
+      (state) => {
+        state.bears += 1;
+      },
+      false,
+      "addABear"
+    );
+  },
+});
+```
+
+[codesandbox demo](https://codesandbox.io/p/sandbox/c3sm7q)
 
 
